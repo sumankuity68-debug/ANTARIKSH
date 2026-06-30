@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>MAHAKASH ANTARIKSH — Lunar South Pole Ice Mission Console</title>
+<meta name="description" content="Live mission console for the Lunar South Pole subsurface ice detection and extraction architecture." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/console.css" />
+</head>
+<body>
+
+<canvas id="starfield"></canvas>
+
+<div class="boot-screen" id="bootScreen">
+  <div class="boot-inner">
+    <div class="boot-logo">MA</div>
+    <div class="boot-title">MAHAKASH ANTARIKSH</div>
+    <div class="boot-sub">LUNAR SOUTH POLE ICE DETECTION &amp; EXTRACTION CONSOLE</div>
+    <div class="boot-bar"><div class="boot-bar-fill" id="bootFill"></div></div>
+    <div class="boot-status" id="bootStatus">INITIALIZING TELEMETRY LINK…</div>
+  </div>
+</div>
+
+<div class="console" id="console" aria-hidden="true">
+
+  <header class="topbar">
+    <div class="topbar-left">
+      <div class="brand">
+        <span class="brand-logo">MA</span>
+        <span class="brand-text">
+          <span class="brand-name">MAHAKASH ANTARIKSH</span>
+          <span class="brand-sub">LUNAR ICE MISSION CONTROL</span>
+        </span>
+      </div>
+    </div>
+    <div class="topbar-center">
+      <span class="mission-tag">SHACKLETON CRATER · LUNAR SOUTH POLE · 89.9°S</span>
+    </div>
+    <div class="topbar-right">
+      <div class="clock-block">
+        <span class="clock-label">MISSION ELAPSED TIME</span>
+        <span class="clock-value" id="missionClock">00:00:00:00</span>
+      </div>
+      <div class="status-pill" id="linkStatus">
+        <span class="status-dot"></span>
+        <span>DTN LINK NOMINAL</span>
+      </div>
+    </div>
+  </header>
+
+  <nav class="phase-rail" aria-label="Mission phases">
+    <button class="phase-btn active" data-phase="1">
+      <span class="phase-num">01</span>
+      <span class="phase-label">
+        <span class="phase-name">Convergence Funnel</span>
+        <span class="phase-desc">Multi-sensor pipeline</span>
+      </span>
+      <span class="phase-state" data-state="active">ACTIVE</span>
+    </button>
+    <button class="phase-btn" data-phase="2">
+      <span class="phase-num">02</span>
+      <span class="phase-label">
+        <span class="phase-name">HAV Strike Platform</span>
+        <span class="phase-desc">Orbital strike sequence</span>
+      </span>
+      <span class="phase-state" data-state="locked">STANDBY</span>
+    </button>
+    <button class="phase-btn" data-phase="3">
+      <span class="phase-num">03</span>
+      <span class="phase-label">
+        <span class="phase-name">Kinetic Dart Sequence</span>
+        <span class="phase-desc">Impact & subsurface scan</span>
+      </span>
+      <span class="phase-state" data-state="locked">STANDBY</span>
+    </button>
+    <button class="phase-btn" data-phase="4">
+      <span class="phase-num">04</span>
+      <span class="phase-label">
+        <span class="phase-name">Outpost / ISRU</span>
+        <span class="phase-desc">Digital twin &amp; propellant</span>
+      </span>
+      <span class="phase-state" data-state="locked">STANDBY</span>
+    </button>
+
+    <div class="rail-divider"></div>
+
+    <div class="rail-readout">
+      <div class="rail-readout-title">CRATER FIELD SEED</div>
+      <div class="rail-readout-row">
+        <input type="text" id="seedInput" value="1337" maxlength="6" />
+        <button id="seedBtn" title="Regenerate crater field">↻</button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="stage" id="stage"></main>
+
+  <aside class="terminal" aria-label="Mission log">
+    <div class="terminal-head">
+      <span>MISSION LOG</span>
+      <span class="terminal-sub">REAL-TIME TELEMETRY</span>
+    </div>
+    <div class="terminal-body" id="terminalBody"></div>
+  </aside>
+
+</div>
+
+<script src="/js/starfield.js"></script>
+<script src="/js/api.js"></script>
+<script src="/js/terminal.js"></script>
+<script src="/js/phase1.js"></script>
+<script src="/js/phase2.js"></script>
+<script src="/js/phase3.js"></script>
+<script src="/js/phase4.js"></script>
+<script src="/js/main.js"></script>
+</body>
+</html>
