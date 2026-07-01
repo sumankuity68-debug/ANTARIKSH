@@ -115,3 +115,5 @@ app.post('/api/digital-twin', (req, res) => {
 app.listen(PORT, () => {
   console.log(`Mahakash Antariksh mission console running on port ${PORT}`);
 });
+
+module.exports = app;
