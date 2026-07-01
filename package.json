@@ -1,0 +1,14 @@
+{
+  "name": "mahakash-antariksh",
+  "version": "1.0.0",
+  "description": "Lunar South Pole Subsurface Ice Detection & Extraction Mission Console",
+  "main": "server/index.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server/index.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "cors": "^2.8.5"
+  }
+}
